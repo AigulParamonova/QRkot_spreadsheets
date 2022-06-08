@@ -1,16 +1,15 @@
-# QRkot_spreadseets
-## Приложение QRKot
+## Приложение QRkot_spreadseets
 
-Проект QRKot — приложение для Благотворительного фонда поддержки котиков. Фонд собирает пожертвования на различные целевые проекты: на медицинское обслуживание нуждающихся хвостатых, на обустройство кошачьей колонии в подвале, на корм оставшимся без попечения кошкам — на любые цели, связанные с поддержкой кошачьей популяции.
+В проект QRKot добавлена возможность формирования отчёта c помощью Google Drive API и Google Sheets API. В таблице закрытые проекты, отсортированны по скорости сбора средств — от тех, что закрылись быстрее всего, до тех, что долго собирали нужную сумму.
 
 Клонировать репозиторий и перейти в него в командной строке:
 
 ```
-git clone https://github.com/AigulParamonova/cat_charity_fund.git
+git clone https://github.com/AigulParamonova/QRkot_spreadsheets.git
 ```
 
 ```
-cd cat_charity_fund
+cd QRkot_spreadsheets
 ```
 
 Cоздать и активировать виртуальное окружение:
@@ -48,8 +47,19 @@ APP_TITLE=Благотворительный фонд котиков
 DESCRIPTION=Сбор пожертвований на нужды хвостатых
 DATABASE_URL=your_database
 SECRET=your_secret
-FIRST_SUPERUSER_EMAIL=your_email
-FIRST_SUPERUSER_PASSWORD=your_password
+FIRST_SUPERUSER_EMAIL
+FIRST_SUPERUSER_PASSWORD=
+EMAIL=
+TYPE=service_account
+PROJECT_ID=
+PRIVATE_KEY_ID=
+PRIVATE_KEY=
+CLIENT_EMAIL=
+CLIENT_ID=
+AUTH_URI=
+TOKEN_URI=
+AUTH_PROVIDER_X509_CERT_URL=
+CLIENT_X509_CERT_URL=
 ```
 
 Автогенерация миграций:
@@ -80,4 +90,6 @@ http://127.0.0.1:8000/docs
 - Python 3.9
 - FastAPI
 - SQLAlchemy 1.4
+- Google Drive API
+- Google Sheets API
 - Git
