@@ -1,5 +1,3 @@
-from typing import List, Dict, Any
-
 from aiogoogle import Aiogoogle
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -10,13 +8,14 @@ from app.core.user import current_superuser
 from app.crud.charity_project import charity_project_crud
 from app.services.google_api import (set_user_permissions, spreadsheets_create,
                                      spreadsheets_update_value)
+from app.schemas.charity_project import CharityProjectGoogle
 
 router = APIRouter()
 
 
 @router.post(
     '/',
-    response_model=List[Dict[str, Any]],
+    response_model=CharityProjectGoogle,
     dependencies=[Depends(current_superuser)],
 )
 async def get_report(

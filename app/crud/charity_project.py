@@ -1,4 +1,4 @@
-from typing import Optional, List, Dict, Any
+from typing import Optional
 
 from sqlalchemy import select, extract
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -14,7 +14,6 @@ class CRUDCharityProject(CRUDBase):
             project_name: str,
             session: AsyncSession,
     ) -> Optional[int]:
-        ''''''
         project_name = await session.execute(
             select(CharityProject).where(
                 CharityProject.name == project_name
@@ -26,7 +25,7 @@ class CRUDCharityProject(CRUDBase):
     async def get_projects_by_completion_rate(
         self,
         session: AsyncSession()
-    ) -> List[Dict[str, Any]]:
+    ):
         '''Возвращает все завершённые проекты.'''
         projects = await session.execute(
             select(CharityProject).where(
