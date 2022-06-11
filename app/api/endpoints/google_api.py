@@ -1,21 +1,22 @@
-from aiogoogle import Aiogoogle
-from fastapi import APIRouter, Depends
-from sqlalchemy.ext.asyncio import AsyncSession
+from typing import List
 
+from aiogoogle import Aiogoogle
 from app.core.db import get_async_session
 from app.core.google_client import get_service
 from app.core.user import current_superuser
 from app.crud.charity_project import charity_project_crud
+from app.schemas.charity_project import CharityProjectGoogle
 from app.services.google_api import (set_user_permissions, spreadsheets_create,
                                      spreadsheets_update_value)
-from app.schemas.charity_project import CharityProjectGoogle
+from fastapi import APIRouter, Depends
+from sqlalchemy.ext.asyncio import AsyncSession
 
 router = APIRouter()
 
 
 @router.post(
     '/',
-    response_model=CharityProjectGoogle,
+    response_model=List[CharityProjectGoogle],
     dependencies=[Depends(current_superuser)],
 )
 async def get_report(
